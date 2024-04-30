@@ -11,7 +11,7 @@ This Arduino sketch allows you to create a MIDI button controller using shift re
 
 ## Circuit Diagram
 
-![Circuit Diagram](circuit_diagram.png)
+![Circuit Diagram](https://github.com/InfectedBytes/ArduinoShiftIn/blob/master/ShiftIn%2Fexamples%2FTwoShiftRegisters%2FLayout2.png)
 
 ## Connecting a 4x4 Button Matrix to Two 74HC165 Shift Registers
 
