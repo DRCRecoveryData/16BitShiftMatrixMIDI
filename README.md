@@ -18,40 +18,34 @@ This Arduino sketch allows you to create a MIDI button controller using shift re
 Certainly! Here's how you can connect a 4x4 button matrix to two 74HC165 shift registers in a grid layout:
 
 ### Button Matrix:
----------------
-Button 1 ----|--- PI0 (Parallel Input 0) of first 74HC165
-Button 2 ----|--- PI1 (Parallel Input 1) of first 74HC165
-Button 3 ----|--- PI2 (Parallel Input 2) of first 74HC165
-Button 4 ----|--- PI3 (Parallel Input 3) of first 74HC165
-Button 5 ----|--- PI4 (Parallel Input 4) of first 74HC165
-Button 6 ----|--- PI5 (Parallel Input 5) of first 74HC165
-Button 7 ----|--- PI6 (Parallel Input 6) of first 74HC165
-Button 8 ----|--- PI7 (Parallel Input 7) of first 74HC165
-
-Button 9 ----|--- PI0 (Parallel Input 0) of second 74HC165
-Button 10 ---|--- PI1 (Parallel Input 1) of second 74HC165
-Button 11 ---|--- PI2 (Parallel Input 2) of second 74HC165
-Button 12 ---|--- PI3 (Parallel Input 3) of second 74HC165
-Button 13 ---|--- PI4 (Parallel Input 4) of second 74HC165
-Button 14 ---|--- PI5 (Parallel Input 5) of second 74HC165
-Button 15 ---|--- PI6 (Parallel Input 6) of second 74HC165
-Button 16 ---|--- PI7 (Parallel Input 7) of second 74HC165
+| Button | Connection                                |
+|--------|-------------------------------------------|
+| 1      | PI0 (Parallel Input 0) of first 74HC165  |
+| 2      | PI1 (Parallel Input 1) of first 74HC165  |
+| 3      | PI2 (Parallel Input 2) of first 74HC165  |
+| 4      | PI3 (Parallel Input 3) of first 74HC165  |
+| 5      | PI4 (Parallel Input 4) of first 74HC165  |
+| 6      | PI5 (Parallel Input 5) of first 74HC165  |
+| 7      | PI6 (Parallel Input 6) of first 74HC165  |
+| 8      | PI7 (Parallel Input 7) of first 74HC165  |
+| 9      | PI0 (Parallel Input 0) of second 74HC165 |
+| 10     | PI1 (Parallel Input 1) of second 74HC165 |
+| 11     | PI2 (Parallel Input 2) of second 74HC165 |
+| 12     | PI3 (Parallel Input 3) of second 74HC165 |
+| 13     | PI4 (Parallel Input 4) of second 74HC165 |
+| 14     | PI5 (Parallel Input 5) of second 74HC165 |
+| 15     | PI6 (Parallel Input 6) of second 74HC165 |
+| 16     | PI7 (Parallel Input 7) of second 74HC165 |
 
 ### Shift Register Connections:
------------------------------
-First 74HC165:
-Q7  ----|---- Serial Data Input (DS) of second 74HC165
-CLK ----|---- Clock (CLK) of Arduino (or microcontroller)
-ST_CP --|---- Latch (ST_CP) of Arduino (or microcontroller)
-VCC ----|---- +5V power supply
-GND ----|---- Ground
+| Pin   | Connection                                |
+|-------|-------------------------------------------|
+| Q7    | Serial Data Input (DS) of second 74HC165 |
+| CLK   | Clock (CLK) of Arduino (or microcontroller)|
+| ST_CP | Latch (ST_CP) of Arduino (or microcontroller)|
+| VCC   | +5V power supply                          |
+| GND   | Ground                                    |
 
-Second 74HC165:
-Q7'  ----|---- Unused (Not connected)
-CLK  ----|---- Clock (CLK) of first 74HC165
-ST_CP ----|---- Latch (ST_CP) of Arduino (or microcontroller)
-VCC  ----|---- +5V power supply
-GND  ----|---- Ground
 
 ## Button Matrix Layout
 
