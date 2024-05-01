@@ -4,14 +4,18 @@
 #define DATA_IN_PIN   2 // Connect to pin 14 (DS) of the first 74HC165
 #define CLOCK_PIN     3 // Connect to pin 11 (SH_CP) of all 74HC165s
 #define LATCH_PIN     4 // Connect to pin 12 (ST_CP) of all 74HC165s
-#define NUM_REGISTERS 1 // Number of 74HC165 shift registers used (4 bits per register)
+#define NUM_REGISTERS 8 // Number of 74HC165 shift registers used
 
-// Define MIDI note numbers for the 4x4 button matrix
-const byte noteMap[16] = {
-  36, 37, 38, 39,
-  40, 41, 42, 43,
-  44, 45, 46, 47,
-  48, 49, 50, 51
+// Define MIDI note numbers for the 8x8 button matrix
+const byte noteMap[64] = {
+  36, 37, 38, 39, 40, 41, 42, 43,
+  44, 45, 46, 47, 48, 49, 50, 51,
+  52, 53, 54, 55, 56, 57, 58, 59,
+  60, 61, 62, 63, 64, 65, 66, 67,
+  68, 69, 70, 71, 72, 73, 74, 75,
+  76, 77, 78, 79, 80, 81, 82, 83,
+  84, 85, 86, 87, 88, 89, 90, 91,
+  92, 93, 94, 95, 96, 97, 98, 99
 };
 
 void setup() {
@@ -23,11 +27,11 @@ void setup() {
 
 void loop() {
   // Read button states
-  uint16_t buttonStates = readButtonStates();
+  uint64_t buttonStates = readButtonStates();
 
   // Send MIDI messages for pressed buttons
-  for (int i = 0; i < 16; i++) {
-    if (buttonStates & (1 << i)) {
+  for (int i = 0; i < 64; i++) {
+    if (buttonStates & (1ULL << i)) {
       sendNoteOn(noteMap[i], 127); // Send note on message
     } else {
       sendNoteOff(noteMap[i], 0); // Send note off message
@@ -35,8 +39,8 @@ void loop() {
   }
 }
 
-uint16_t readButtonStates() {
-  uint16_t buttonStates = 0;
+uint64_t readButtonStates() {
+  uint64_t buttonStates = 0;
 
   // Load parallel data into the shift registers
   digitalWrite(LATCH_PIN, LOW);
@@ -45,7 +49,7 @@ uint16_t readButtonStates() {
   
   // Read the serial data from the shift registers
   for (int i = NUM_REGISTERS - 1; i >= 0; i--) {
-    buttonStates |= ((uint16_t)shiftIn(DATA_IN_PIN, CLOCK_PIN) << (i * 8)); // Combine bits into 16-bit integer
+    buttonStates |= ((uint64_t)shiftIn(DATA_IN_PIN, CLOCK_PIN) << (i * 8)); // Combine bits into 64-bit integer
   }
 
   return buttonStates;
