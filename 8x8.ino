@@ -1,21 +1,21 @@
 #include <MIDIUSB.h>
 
 // Define pin connections for 74HC165 shift registers
-#define DATA_IN_PIN   2 // Connect to pin 14 (DS) of the first 74HC165
-#define CLOCK_PIN     3 // Connect to pin 11 (SH_CP) of all 74HC165s
-#define LATCH_PIN     4 // Connect to pin 12 (ST_CP) of all 74HC165s
-#define NUM_REGISTERS 8 // Number of 74HC165 shift registers used
+#define DATA_IN_PIN   4 // Connect to SHFTSDA (QH)
+#define CLOCK_PIN     6 // Connect to SHFTCLK (CLK)
+#define LATCH_PIN     5 // Connect to SHFTSERIAL (SERIAL_SHIFT/PARALLEL_LOAD)
+#define NUM_REGISTERS 8 // Number of 74HC165 shift registers used (8 bits per register)
 
 // Define MIDI note numbers for the 8x8 button matrix
 const byte noteMap[64] = {
-  36, 37, 38, 39, 40, 41, 42, 43,
-  44, 45, 46, 47, 48, 49, 50, 51,
-  52, 53, 54, 55, 56, 57, 58, 59,
-  60, 61, 62, 63, 64, 65, 66, 67,
-  68, 69, 70, 71, 72, 73, 74, 75,
-  76, 77, 78, 79, 80, 81, 82, 83,
-  84, 85, 86, 87, 88, 89, 90, 91,
-  92, 93, 94, 95, 96, 97, 98, 99
+  39, 38, 37, 36, 43, 42, 41, 40,
+  47, 46, 45, 44, 51, 50, 49, 48,
+  55, 54, 53, 52, 59, 58, 57, 56,
+  63, 62, 61, 60, 67, 66, 65, 64,
+  71, 70, 69, 68, 75, 74, 73, 72,
+  79, 78, 77, 76, 83, 82, 81, 80,
+  87, 86, 85, 84, 91, 90, 89, 88,
+  95, 94, 93, 92, 99, 98, 97, 96
 };
 
 void setup() {
