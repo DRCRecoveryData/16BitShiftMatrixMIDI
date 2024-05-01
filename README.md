@@ -54,8 +54,8 @@ In a 4x4 button matrix layout, the buttons are typically numbered sequentially f
 ```
 16 15 14 13
 12 11 10 9
-8 7 6 5
-4 3 2 1
+8  7  6  5
+4  3  2  1
 ```
 
 Each number corresponds to a physical button in the matrix. For example, button 1 is the top-left button, button 2 is the button next to it to the right, and so on. This numbering scheme allows you to easily identify each button's position in the matrix.
